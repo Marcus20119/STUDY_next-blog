@@ -1,16 +1,9 @@
 import Image from 'next/image';
-import { Inter } from 'next/font/google';
 import { Box, Typography } from '@mui/material';
+import MainLayout from '@/layouts/MainLayout';
 
-const inter = Inter({ subsets: ['latin'] });
-
-export default function Home() {
-  return (
-    <Box>
-      <h1></h1>
-      <Typography component="h1" variant="h3" color="primary.main">
-        About Page
-      </Typography>
-    </Box>
-  );
+export default function HomePage() {
+  return <Box>Home Page</Box>;
 }
+
+HomePage.Layout = MainLayout;

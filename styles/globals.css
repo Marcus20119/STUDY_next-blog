@@ -4,7 +4,7 @@
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 body {
-  font-family: 'Epilogue', sans-serif;
+  /* font-family: 'Epilogue', sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
