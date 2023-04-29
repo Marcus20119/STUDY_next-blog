@@ -1,27 +1,38 @@
+import { PostItem } from '@/components/blog';
+import MainLayout from '@/layouts/MainLayout';
+import { Post } from '@/models';
 import { getPostList } from '@/utils/posts';
+import { Container, Divider } from '@mui/material';
+import { Box } from '@mui/system';
 import { GetStaticProps, GetStaticPropsContext } from 'next';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
 interface IBlogPage {
-  posts: any[];
+  posts: Post[];
 }
 
 export default function BlogPage({ posts }: IBlogPage) {
-  console.log('posts:', posts);
   return (
-    <div>
-      <ul className="flex flex-col gap-2">
-        {posts.map(post => (
-          <li key={post.id} className="text-lg hover:opacity-80">
-            <Link href={`/SSG/${post.id}`}>{post.title}</Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Box>
+      <Container>
+        <h1>Blog</h1>
+        <Box component="ul" sx={{ listStyleType: 'none', p: 0 }}>
+          {posts.map(post => (
+            <li key={post.id} className="text-lg hover:opacity-80">
+              <Link href={`/blog/${post.slug}`}>
+                <PostItem post={post} />
+                <Divider sx={{ my: 3 }} />
+              </Link>
+            </li>
+          ))}
+        </Box>
+      </Container>
+    </Box>
   );
 }
 
+BlogPage.Layout = MainLayout;
 // Chỉ chạy phía server, dùng để gọi api và trả về dữ liệu
 export const getStaticProps: GetStaticProps<IBlogPage> = async (
   context: GetStaticPropsContext

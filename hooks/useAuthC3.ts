@@ -20,7 +20,7 @@ export function useAuth(options?: Partial<PublicConfiguration>) {
 
   async function login(payload: LoginPayload) {
     await authApi.login(payload);
-    await mutate(); // Phải có wait vì tham số thứ 2 = true => có trigger api
+    await mutate(); // Phải có await vì tham số thứ 2 = true => có trigger api
     console.log('Redirect to somewhere');
   }
 
