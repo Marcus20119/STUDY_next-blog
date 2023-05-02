@@ -10,7 +10,14 @@ import { SEO } from '@/components/common';
 const HomePage: NextPageWithLayout = ({}) => {
   return (
     <>
-      <SEO title="Next Blog | Home" description="" url="" thumbnailUrl="" />
+      <SEO
+        data={{
+          title: 'Next Blog | Home',
+          description: '',
+          url: '',
+          thumbnailUrl: '',
+        }}
+      />
       <HeroSection />
       <RecentPostsSection />
       <FeatureWorksSection />
