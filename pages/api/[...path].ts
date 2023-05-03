@@ -30,7 +30,7 @@ export default function handler(
     });
 
     proxy.once('proxyRes', () => {
-      resolve(true);
+      resolve(null);
     });
   });
 }

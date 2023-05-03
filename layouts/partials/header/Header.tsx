@@ -13,4 +13,4 @@ const Header: React.FC<IHeader> = ({}) => {
   );
 };
 
-export { Header };
+export default Header;

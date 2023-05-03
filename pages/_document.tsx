@@ -24,6 +24,8 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
         {/* PWA primary color */}
         <meta name="theme-color" content={theme.palette.primary.main} />
         <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         <meta name="emotion-insertion-point" content="" />
         {emotionStyleTags}
       </Head>

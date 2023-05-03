@@ -1,1 +1,1 @@
-export * from './useAuthC3';
+export * from './useAuth';

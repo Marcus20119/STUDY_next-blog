@@ -18,7 +18,6 @@ export default function handler(
   }
   return new Promise(async resolve => {
     // Không gửi cookie lên server
-    req.headers.cookie = '';
 
     const handleLoginResponse: ProxyResCallback = (proxyRes, req, res) => {
       let body: string = '';
@@ -27,6 +26,17 @@ export default function handler(
       });
       proxyRes.on('end', () => {
         try {
+          const isSuccess =
+            proxyRes.statusCode &&
+            proxyRes.statusCode >= 200 &&
+            proxyRes.statusCode < 300;
+          if (!isSuccess) {
+            (res as NextApiResponse)
+              .status(proxyRes.statusCode || 500)
+              .json(body);
+            return resolve(null);
+          }
+
           const { accessToken, expiredAt } = JSON.parse(body);
           const cookies = new Cookies(req, res, {
             secure: process.env.NODE_ENV !== 'development',
@@ -46,7 +56,7 @@ export default function handler(
             .status(500)
             .json({ message: 'Something went Wrong' });
         }
-        resolve(true);
+        resolve(null);
       });
     };
 
